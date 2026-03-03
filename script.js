@@ -221,3 +221,110 @@ const sectionObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sections.forEach(s => sectionObserver.observe(s));
+
+// ---------- PROYECTO: MODAL + CARRUSEL ----------
+const projectCards = document.querySelectorAll('.project-card');
+const modalOverlay = document.getElementById('projectModal');
+const carouselTrack = document.getElementById('carouselTrack');
+const modalTitle = document.getElementById('modalTitle');
+const modalMeta = document.getElementById('modalMeta');
+const modalDesc = document.getElementById('modalDesc');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const modalClose = document.getElementById('modalClose');
+
+let currentIndex = 0;
+
+function parseMediaList(card) {
+    const raw = card.dataset.media;
+    if (raw) {
+        try { return JSON.parse(raw); } catch (e) { return []; }
+    }
+    // Fallback: try to read background-image from .project-card__img
+    const imgDiv = card.querySelector('.project-card__img');
+    if (imgDiv) {
+        const bg = getComputedStyle(imgDiv).backgroundImage; // url("file.jpg")
+        const m = bg.match(/url\(["']?(.+?)["']?\)/);
+        if (m && m[1]) return [m[1]];
+    }
+    return [];
+}
+
+function buildSlides(media) {
+    carouselTrack.innerHTML = '';
+    media.forEach(src => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        if (/\.(mp4|webm|ogg)$/i.test(src)) {
+            const vid = document.createElement('video');
+            vid.src = src;
+            vid.controls = true;
+            vid.playsInline = true;
+            vid.preload = 'metadata';
+            slide.appendChild(vid);
+        } else {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = '';
+            slide.appendChild(img);
+        }
+        carouselTrack.appendChild(slide);
+    });
+}
+
+function updateCarousel() {
+    const slides = carouselTrack.children.length;
+    if (slides === 0) return;
+    if (currentIndex < 0) currentIndex = slides - 1;
+    if (currentIndex >= slides) currentIndex = 0;
+    carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+    // Pause other videos
+    carouselTrack.querySelectorAll('video').forEach((v, i) => {
+        if (i === currentIndex) return;
+        try { v.pause(); v.currentTime = 0; } catch (e) {}
+    });
+}
+
+function openModal(card) {
+    const media = parseMediaList(card);
+    buildSlides(media);
+    modalTitle.textContent = card.dataset.title || '';
+    modalMeta.textContent = card.dataset.meta || '';
+    modalDesc.textContent = card.dataset.desc || '';
+    currentIndex = 0;
+    updateCarousel();
+    modalOverlay.classList.add('open');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    // focus for keyboard
+    document.getElementById('carousel').focus();
+}
+
+function closeModal() {
+    modalOverlay.classList.remove('open');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    // stop any playing videos
+    carouselTrack.querySelectorAll('video').forEach(v => { try { v.pause(); } catch(e){} });
+}
+
+projectCards.forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') openModal(card); });
+    card.setAttribute('tabindex', '0');
+});
+
+prevBtn.addEventListener('click', () => { currentIndex -= 1; updateCarousel(); });
+nextBtn.addEventListener('click', () => { currentIndex += 1; updateCarousel(); });
+modalClose.addEventListener('click', closeModal);
+
+modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (modalOverlay.classList.contains('open')) {
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') { currentIndex -= 1; updateCarousel(); }
+        if (e.key === 'ArrowRight') { currentIndex += 1; updateCarousel(); }
+    }
+});
+

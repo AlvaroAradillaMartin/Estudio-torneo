@@ -232,7 +232,11 @@
                 </div>
                 <div class="projects-grid" role="list">
                     <article class="project-card project-card--large" role="listitem"
-                        aria-label="Proyecto Casa Blanca – Estilo contemporáneo, Madrid 2024">
+                        aria-label="Proyecto Casa Blanca – Estilo contemporáneo, Madrid 2024"
+                        data-title="Casa Blanca"
+                        data-meta="Madrid · 2024"
+                        data-desc="Cocina contemporánea con isla central y vinoteca integrada. Diseño pensado para familias que cocinan a diario."
+                        data-media='["cocina-blanca-vinoteca.jpg","cocina-blanca-madera.jpg","tour-casa-blanca.mp4"]'>
                         <div class="project-card__img project-card__img--1" role="img"
                             aria-label="Cocina contemporánea del proyecto Casa Blanca en Madrid"></div>
                         <div class="project-card__overlay">
@@ -242,7 +246,11 @@
                         </div>
                     </article>
                     <article class="project-card" role="listitem"
-                        aria-label="Proyecto Loft Malasaña – Estilo nórdico, Madrid 2024">
+                        aria-label="Proyecto Loft Malasaña – Estilo nórdico, Madrid 2024"
+                        data-title="Loft Malasaña"
+                        data-meta="Madrid · 2024"
+                        data-desc="Proyecto de estilo nórdico, colores claros y soluciones de almacenaje oculto."
+                        data-media='["cocina-blanca-madera.jpg","loft-malasana-2.jpg"]'>
                         <div class="project-card__img project-card__img--2" role="img"
                             aria-label="Cocina nórdica del proyecto Loft Malasaña en Madrid"></div>
                         <div class="project-card__overlay">
@@ -252,7 +260,11 @@
                         </div>
                     </article>
                     <article class="project-card" role="listitem"
-                        aria-label="Proyecto Ático Salamanca – Estilo industrial, Madrid 2023">
+                        aria-label="Proyecto Ático Salamanca – Estilo industrial, Madrid 2023"
+                        data-title="Ático Salamanca"
+                        data-meta="Madrid · 2023"
+                        data-desc="Estética industrial con materiales robustos y campana integrada."
+                        data-media='["showroom-cocina-negra.jpg","atico-salamanca-2.jpg"]'>
                         <div class="project-card__img project-card__img--3" role="img"
                             aria-label="Cocina industrial del proyecto Ático Salamanca en Madrid"></div>
                         <div class="project-card__overlay">
@@ -262,7 +274,11 @@
                         </div>
                     </article>
                     <article class="project-card project-card--wide" role="listitem"
-                        aria-label="Proyecto Villa Pozuelo – Estilo clásico moderno, Pozuelo 2023">
+                        aria-label="Proyecto Villa Pozuelo – Estilo clásico moderno, Pozuelo 2023"
+                        data-title="Villa Pozuelo"
+                        data-meta="Pozuelo · 2023"
+                        data-desc="Clásico moderno con encimera de mármol y mobiliario a medida."
+                        data-media='["showroom-isla-marmol.jpg","villa-pozuelo-2.jpg","villa-pozuelo-tour.mp4"]'>
                         <div class="project-card__img project-card__img--4" role="img"
                             aria-label="Cocina clásico moderna del proyecto Villa Pozuelo"></div>
                         <div class="project-card__overlay">
@@ -655,6 +671,25 @@
             </div>
         </div>
     </footer>
+
+    <!-- PROYECTO MODAL / CARRUSEL -->
+    <div class="modal-overlay" id="projectModal" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-label="Visor de proyecto">
+            <button class="modal__close" id="modalClose" aria-label="Cerrar">✕</button>
+            <div class="modal__media">
+                <button class="carousel__nav carousel__nav--prev" id="prevBtn" aria-label="Anterior">‹</button>
+                <div class="carousel" id="carousel" tabindex="0">
+                    <div class="carousel__track" id="carouselTrack" aria-live="polite"></div>
+                </div>
+                <button class="carousel__nav carousel__nav--next" id="nextBtn" aria-label="Siguiente">›</button>
+            </div>
+            <div class="modal__meta">
+                <h3 id="modalTitle"></h3>
+                <p class="modal__meta-line" id="modalMeta"></p>
+                <p class="modal__desc" id="modalDesc"></p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
