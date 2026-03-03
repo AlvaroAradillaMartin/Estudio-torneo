@@ -396,14 +396,14 @@ img {
 .kitchen-card__img--1 {
     background:
         linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, .6) 100%),
-        url('img/cocina-blanca-vinoteca.jpg') center/cover no-repeat;
+        url('cocina-blanca-vinoteca.jpg') center/cover no-repeat;
     position: relative;
 }
 
 .kitchen-card__img--2 {
     background:
         linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, .6) 100%),
-        url('img/cocina-blanca-madera.jpg') center/cover no-repeat;
+        url('cocina-blanca-madera.jpg') center/cover no-repeat;
 }
 
 .kitchen-card__label {
@@ -650,28 +650,28 @@ img {
 .project-card__img--1 {
     background:
         linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, .85) 100%),
-        url('img/cocina-blanca-vinoteca.jpg') center/cover no-repeat;
+        url('cocina-blanca-vinoteca.jpg') center/cover no-repeat;
     position: relative;
 }
 
 .project-card__img--2 {
     background:
         linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, .85) 100%),
-        url('img/cocina-blanca-madera.jpg') center/cover no-repeat;
+        url('cocina-blanca-madera.jpg') center/cover no-repeat;
     position: relative;
 }
 
 .project-card__img--3 {
     background:
         linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, .85) 100%),
-        url('img/showroom-cocina-negra.jpg') center/cover no-repeat;
+        url('showroom-cocina-negra.jpg') center/cover no-repeat;
     position: relative;
 }
 
 .project-card__img--4 {
     background:
         linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, .85) 100%),
-        url('img/showroom-isla-marmol.jpg') center/cover no-repeat;
+        url('showroom-isla-marmol.jpg') center/cover no-repeat;
     position: relative;
 }
 
