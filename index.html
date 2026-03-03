@@ -530,7 +530,16 @@
                             </ul>
                         </address>
                     </div>
-                    <form class="contact-form" id="contactForm" novalidate aria-label="Formulario de contacto">
+                    <form class="contact-form" action="https://formsubmit.co/alvaroaradilla@gmail.com" method="POST"
+                        novalidate aria-label="Formulario de contacto">
+
+                        <!-- Ajustes de FormSubmit -->
+                        <input type="hidden" name="_subject" value="Nueva consulta desde Estudio Torneo">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next"
+                            value="https://alvaroaradillamartin.github.io/Estudio-torneo/gracias.html">
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="nombre">Nombre <span class="required-mark"
@@ -544,6 +553,7 @@
                                     autocomplete="family-name" />
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email">Email <span class="required-mark" aria-hidden="true">*</span></label>
@@ -556,6 +566,7 @@
                                     autocomplete="tel" />
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="servicio">Servicio de interés</label>
                             <select id="servicio" name="servicio" aria-describedby="servicio-hint">
@@ -568,17 +579,22 @@
                             <span id="servicio-hint" class="sr-only">Opcional. Selecciona el servicio que más te
                                 interesa.</span>
                         </div>
+
                         <div class="form-group">
                             <label for="mensaje">Cuéntanos tu proyecto</label>
                             <textarea id="mensaje" name="mensaje" rows="4"
                                 placeholder="Describe brevemente tu cocina actual y lo que buscas..."></textarea>
                         </div>
+
                         <p class="form-required-note"><span aria-hidden="true">*</span> Campos obligatorios</p>
+
                         <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
                             Enviar consulta gratuita
                         </button>
+
                         <p class="form-privacy">Al enviar aceptas nuestra <a href="#">política de privacidad</a>.</p>
                     </form>
+
                 </div>
             </div>
         </section>
